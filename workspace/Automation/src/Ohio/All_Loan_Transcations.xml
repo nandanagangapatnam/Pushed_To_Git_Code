@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite" >
+  <test name="Test" preserve-order="true">
+    <classes>
+    	<class name="Ohio.Current_SystemDate"></class>
+    	<class name="Ohio._12_Verify_Loan_under18_Years"></class>
+       	<class name="Ohio._44_Void_Loan_Origination"></class>
+    	<class name="Ohio._45_Void_Loan_Payment"></class>
+    	<class name="Ohio._48_Void_Chargeoff"></class>
+    	<class name="Ohio._47_Void_Loan_Payoff"></class>    	
+    	<class name="Ohio._4_a_Verify_Loan_Amt_OH"></class> 
+    	<class name="Ohio._30_Void_Deposited_Check"></class> 
+    	
+    	
+         
+    </classes>
+  </test>
+</suite>

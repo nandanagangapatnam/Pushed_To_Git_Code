@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;_01_Create_PRA_14_28_31.java&apos; to &apos;virginia_regression._01_Create_PRA_14_28_31.java&apos;&#x0D;&#x0A;- Original project: &apos;Automation&apos;&#x0D;&#x0A;- Destination element: &apos;virginia_regression._01_Create_PRA_14_28_31.java&apos;&#x0D;&#x0A;- Original element: &apos;virginia_regression._01_Create_PRA_14_28_31.java&apos;" description="Copy compilation unit" destination="/src&lt;virginia_regression{_01_Create_PRA_14_28_31.java" element1="/src&lt;virginia_regression{_01_Create_PRA_14_28_31.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1499266798204" units="1" version="1.0"/>
+</session>

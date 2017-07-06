@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite" >
+  <test name="Test" preserve-order="true">
+    <classes>
+    	
+ 		<class name="VA.Current_SystemDate"></class>
+    	 <class name="VA._17_Verify_MO_over_Threshold"></class>
+    	 <class name="VA._18_Verify_WU_Send_over_Threshold"></class>
+    	 <class name="VA._19_Verify_WU_Receiv_over_Threshold"></class>
+    	 <class name="VA._20_Verify_check_over_10000_Threshold"></class>
+    	 <class name="VA._21_Verify_Insight_CardLoad_Threshold"></class>
+         
+              
+    </classes>
+  </test>
+</suite>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="Florida/" kind="src" path="Automation/src"/>
+	<classpathentry kind="src" path="Automation/src/Florida"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="Automation/bin"/>
+</classpath>

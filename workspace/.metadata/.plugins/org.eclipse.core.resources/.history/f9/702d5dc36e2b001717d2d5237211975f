@@ -1,0 +1,526 @@
+/**
+ * 
+ */
+/**
+ * @author Garima
+ *
+ */
+package aml_regression;
+
+
+import Utility.Utils;
+
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.FileInputStream;
+import java.text.DecimalFormat;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Properties;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import javax.swing.text.Element;
+
+import Functions.Function_Classes;
+
+
+public class _1_AML_TestScenarios {
+	
+	String vBrowser = "FireFox";
+	//set driver path 
+	
+ 
+	WebDriver driver, driver1;
+	String URL = "http://ecashtest.corp.checksmart.com/logon.aspx?ReturnUrl=%2f";
+	String URL1 = "http://ecashtest.corp.checksmart.com/logon.aspx?ReturnUrl=%2f";
+	String Username, Password, LoggedName;
+	int len_Eprincipal,len_AvailCdt;
+	String loanlink,Status,DueDate,FPDueDate,BusDate,Late;
+	String xlCdtlimit , xlDraw,I_xlDraw,I_xlCdtlimit;
+	String xpath,EarnedPrincoutput,AvailCdt,AvailCdt1,AvailCdtoutput1,AvailCdtoutput,EPrincipal;
+	String xlURL, xlUsername, xlPassword, xlStore,  xlCustFName, xlCustLName;
+	String[][] xlData;
+	String[][] xlResults;
+	public static Properties OR=null;
+
+
+	//@BeforeTest	
+	@Test (priority = 1)
+	public void _1_navigate_to_eCashURL (){		
+		System.out.println("Ecash URL  --  Started");
+		
+	
+		driver = new FirefoxDriver(); //	firefox driver
+		driver.manage().window().maximize();	
+		 
+		Function_Classes.navigate_to(driver, URL);	
+		      //add fail entry to the excel sheet
+
+	}
+	
+	
+	@Test (priority = 3)
+	public void  _3_store_login () throws Exception{
+
+		System.out.println("Ecash Teller Login   --  Started");
+			
+		OR = new Properties();
+		FileInputStream fn = new FileInputStream (System.getProperty("user.dir")+ "//src//Functions/OR.properties");
+		OR.load(fn);
+		
+
+		
+		Thread.sleep(1000);
+		xpath=".//*[@id='txtUsername']";  // Clearing User Name field
+		Function_Classes.field_clear(driver, xpath );
+		
+		Thread.sleep(1000);
+		xpath=".//*[@id='txtUsername']";  // Passing User name 
+		Function_Classes.field_sendKeys(driver, xpath,"gsrivastavteller");
+		
+		Thread.sleep(1000);
+		xpath=".//*[@id='txtPasswd']";  // Clearing Password field
+		Function_Classes.field_clear(driver, xpath );
+		
+		Thread.sleep(1000);
+		xpath=".//*[@id='txtPasswd']";  // Passing Password
+		Function_Classes.field_sendKeys(driver, xpath,"changeme123");
+		
+		Thread.sleep(1000);
+		xpath = ".//*[@id='btnSubmit']"; // Click on go button
+		Function_Classes.field_click(driver, xpath);
+		
+		Thread.sleep(1000);
+		xpath=".//*[@id='ddlStore']";  // selecting the state 
+		Function_Classes.field_sendKeys(driver, xpath, "9998 Some Place, TN");
+
+		Thread.sleep(1000);
+		xpath = ".//*[@id='btnSelStore']"; // clicking ok 
+		Function_Classes.field_click (driver, xpath);
+			
+		System.out.println("Ecash Store Login   --  Passed");
+		
+		
+	}
+	
+
+	
+	
+	// New MO Creation  - working fine
+	@Test (priority = 4)
+	public void _4_RapidPay_disenrollment() throws Exception {
+	
+		System.out.println("Ecash New Loan Creation   --  Started");
+		
+		xlData = Utils.readXL(OR.getProperty("amlpath"),"AML");	
+		
+	for ( int i =1 ; i<=141 ; i++){	
+		
+		if (xlData[i][0] .equals("2")){
+		
+			xpath = ".//*[@id='Left']/a[5]"; // Click on Customer left navigation button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+	
+			xpath = ".//*[@id='ctl00_MainContent_CustSrch_txtName']"; // enter cust search  value
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("Blue Alvin");
+			
+			xpath =".//*[@id='ctl00_MainContent_CustSrch_btnSubmit']";  // click on Search button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewMiscSale']"; // clicking on the MS button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+	
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ddlItems']";  // Select MO Western Union 
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+			Select Item = new Select(driver.findElement(By.xpath(xpath)));
+			Item.selectByVisibleText("MO Western Union");
+	
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_pnlList']/table/tbody/tr/td";  // Western Union Money Order Sale  
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+	
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_cbNonIntegrated']";  // Process Manually
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+					
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_rptMOItems_ctl01_txtAmount']";  // Amount
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			
+			Thread.sleep(1500);
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("3000");
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_rptMOItems_ctl01_txtPayee']";  // Payee
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+	
+			Thread.sleep(1000);
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_rptMOItems_ctl01_txtFee']";  
+			String Fee = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getAttribute("value");
+			System.out.println(Fee);
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_lblSubTotal']";  
+			String Subtotal = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_lblTotalTax']";  
+			String Tax = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_lblTotalFees']";  
+			String Fees = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_lblTotal']";  
+			String Total = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			
+			if (Subtotal .equals("$3,000.00") && Tax .equals("$0.00") && Fees .equals("$2.00") && Total .equals("$3,002.00") && Fee .equals("2.00")){
+			
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_txtAmountFromCustomer']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+				Thread.sleep(1500);
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("3002");
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_rptMOItems_ctl01_txtMONumber']";  // Amount
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+				Thread.sleep(1000);
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("1");
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_btnSubmit']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_lblStatus']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+				String Status = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))) .getText();
+				Assert.assertEquals(Status , "Processed Manually");
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ctl20_btnConfirmSubmit']";  // Continue Button
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_TabNav_lnkGeneral']";  //HOme Page
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+				
+
+			}
+			
+			else{
+				
+				System.out.println("Values are not correct");
+			}
+	
+			Assert.assertEquals(Total, "$3,002.00");
+			Assert.assertEquals(Fees, "$2.00");
+			Assert.assertEquals(Tax, "$0.00");
+			Assert.assertEquals(Subtotal, "$3,000.00");
+			Assert.assertEquals(Fee, "2.00");
+			
+		}
+		else if (xlData[i][0] .equals("3")){
+			
+			xpath = ".//*[@id='Left']/a[5]"; // Click on Customer left navigation button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath = ".//*[@id='ctl00_MainContent_CustSrch_txtName']"; // enter cust search  value
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("Rita Baez");
+			
+			xpath =".//*[@id='ctl00_MainContent_CustSrch_btnSubmit']";  // click on Search button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewMiscSale']"; // clicking on the MS button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ddlItems']";  // Select Bill Pay – WU CONV Pay 
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+			Select Item = new Select(driver.findElement(By.xpath(xpath)));
+			Item.selectByVisibleText("Bill Pay – WU CONV Pay");
+
+			Thread.sleep(2000);
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtPrice']";  // Amount
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("3600");
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtAmount']"; 
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			Thread.sleep(1000);
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblSubTotal']";  
+			String SubTotal = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			System.out.println(SubTotal);
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtFees']";  
+			String Fee = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getAttribute("value");
+			
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblTax']";  
+			String Tax = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblTotal']";  
+			String Total = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtAmount']";  
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+			
+			if (SubTotal .equals("$3,600.00") && Tax .equals("$0.00") && Fee .equals("0.00") && Total .equals("$3,600.00") ){
+			
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnSubmitCart']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblNetTotal']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+				String NetTotal = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))) .getText();
+			
+				if (NetTotal .equals("$3,600.00")){
+					
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtAmount']";  // Amount
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("3600");
+				
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnSubmit']";  // Submit Button
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+					
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnContinue']";  // Continue Button
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_TabNav_lnkGeneral']";  //HOme Page
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+
+		
+				}
+				
+				else{
+					
+					System.out.println(NetTotal + "not equals $3600,.00");
+					
+				}
+			
+				
+				Assert.assertEquals(NetTotal , "$3,600.00");
+			}
+			
+			else{
+				
+				System.out.println("Values are not correct");
+			}
+				Assert.assertEquals(SubTotal, "$3,600.00");
+				Assert.assertEquals(Tax, "$0.00");
+				Assert.assertEquals(Fee, "0.00");
+				Assert.assertEquals(Total, "$3,600.00");
+		
+		}	
+		else if (xlData[i][0] .equals("11")){
+			
+			xpath = ".//*[@id='Left']/a[5]"; // Click on Customer left navigation button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath = ".//*[@id='ctl00_MainContent_CustSrch_txtName']"; // enter cust search  value
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("Tena Allen");
+			
+			xpath =".//*[@id='ctl00_MainContent_CustSrch_btnSubmit']";  // click on Search button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewMiscSale']"; // clicking on the MS button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ddlItems']";  // Select Bill Pay – WU CONV Pay 
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+			Select Item = new Select(driver.findElement(By.xpath(xpath)));
+			Item.selectByVisibleText("Insight Card Load");
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_cbNonIntegrated']"; 
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtPrice']";  // Amount
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			
+			Thread.sleep(2000);
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("2000");
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtFees']"; 
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			
+			Thread.sleep(1500);
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblTax']";  
+			String Tax = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+	
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblTotal']";  
+			String Total = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtFees']";  
+			String Fees = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getAttribute("value");
+
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblSubTotal']";  
+			String SubTotal = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+
+			if (SubTotal .equals("$2,000.00") && Tax .equals("$0.00") && Fees .equals("2.00") && Total .equals("$2,002.00") ){
+
+			
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtAmount']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+				Thread.sleep(1500);
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("2002");
+			
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnSubmit']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblAmtFromCust']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+				String AmtFrmCust = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))) .getText();
+			
+				if (AmtFrmCust .equals("$2,002.00")){
+					
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnConfirmSubmit']";  // Continue Button
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_TabNav_lnkGeneral']";  //HOme Page
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+
+				
+				}
+				
+				else{
+					
+					System.out.println(AmtFrmCust + "not equals $2002.00");
+					
+				}
+			
+				
+				Assert.assertEquals(AmtFrmCust , "$2,002.00");
+			}
+			
+			else{
+				
+				System.out.println("Values are not correct");
+				
+				Assert.assertEquals(SubTotal, "$2,000.00");
+				Assert.assertEquals(Tax, "$0.00");
+				Assert.assertEquals(Fees, "2.00");
+				Assert.assertEquals(Total, "$2,002.00");
+			}
+
+			xpath = ".//*[@id='Left']/a[5]"; // Click on Customer left navigation button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath = ".//*[@id='ctl00_MainContent_CustSrch_txtName']"; // enter cust search  value
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("Tena Allen");
+			
+			xpath =".//*[@id='ctl00_MainContent_CustSrch_btnSubmit']";  // click on Search button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewMiscSale']"; // clicking on the MS button
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_ddlItems']";  // Select Bill Pay – WU CONV Pay 
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+			Select Item_2 = new Select(driver.findElement(By.xpath(xpath)));
+			Item_2.selectByVisibleText("Bill Pay – WU CONV Pay");
+
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtPrice']";  // Amount
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			
+			Thread.sleep(1500);
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("1700");
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtAmount']"; 
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			Thread.sleep(1000);
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblSubTotal']";  
+			String SubTotal_2 = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			System.out.println(SubTotal_2);
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtFees']";  
+			String Fee_2 = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getAttribute("value");
+			
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblTax']";  
+			String Tax_2 = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblTotal']";  
+			String Total_2 = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtAmount']";  
+			new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+			
+			if (SubTotal_2 .equals("$1,700.00") && Tax_2 .equals("$0.00") && Fee_2 .equals("0.00") && Total_2 .equals("$1,700.00") ){
+			
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnSubmitCart']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+				xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lblNetTotal']";  
+				new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+				String NetTotal_2 = new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))) .getText();
+			
+				if (NetTotal_2 .equals("$1,700.00")){
+					
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtAmount']";  // Amount
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+					
+					Thread.sleep(1500);
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys("1700");
+				
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnSubmit']";  // Submit Button
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+					
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnContinue']";  // Continue Button
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+					xpath = ".//*[@id='ctl00_ctl00_MainContent_TabNav_lnkGeneral']";  //HOme Page
+					new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+
+		
+				}
+				
+				else{
+					
+					System.out.println(NetTotal_2 + "not equals $1700.00");
+					
+				}
+			
+				
+				Assert.assertEquals(NetTotal_2 , "$1,700.00");
+			}
+			
+			else{
+				
+					System.out.println("Values are not correct");
+					Assert.assertEquals(SubTotal_2, "$1,700.00");
+					Assert.assertEquals(Tax_2, "$0.00");
+					Assert.assertEquals(Fee_2, "0.00");
+					Assert.assertEquals(Total_2, "$3,600.00");
+				
+				}
+
+			}	
+		}	
+	}
+}

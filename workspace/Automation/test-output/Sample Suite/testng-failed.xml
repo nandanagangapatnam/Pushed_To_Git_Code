@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Sample Suite]">
+  <test name="Regression Test_VA_LOC_Part1(failed)">
+    <classes>
+      <class name="virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql">
+        <methods>
+          <include name="_3_LOC_RPDraw_equals_Credit"/>
+        </methods>
+      </class> <!-- virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql -->
+    </classes>
+  </test> <!-- Regression Test_VA_LOC_Part1(failed) -->
+</suite> <!-- Failed suite [Sample Suite] -->

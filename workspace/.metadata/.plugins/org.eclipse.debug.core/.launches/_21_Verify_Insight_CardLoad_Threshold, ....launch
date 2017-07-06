@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.testng.eclipse.launchconfig">
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.testng.remote.RemoteTestNG"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Automation"/>
+<mapAttribute key="org.testng.eclipse.ALL_CLASS_METHODS"/>
+<listAttribute key="org.testng.eclipse.CLASS_TEST_LIST">
+<listEntry value="VA._21_Verify_Insight_CardLoad_Threshold"/>
+<listEntry value="VA._5_a_Verify_Multiple_Loans_VA"/>
+<listEntry value="VA._18_Verify_WU_Send_over_Threshold"/>
+<listEntry value="VA._59_Void_xcode_Misc_Cash"/>
+<listEntry value="VA._43_Void_Insight_Cardload"/>
+<listEntry value="VA.Multiple"/>
+<listEntry value="VA.Create_NSF_Fee"/>
+<listEntry value="VA._30_Void_Deposited_Check"/>
+<listEntry value="VA._47_Void_Loan_Payoff"/>
+<listEntry value="VA._35_Void_ATM_Sale"/>
+<listEntry value="VA._9_10_Verify_Patial_Full_Loan_Amt"/>
+<listEntry value="VA._38_Void_Envelopes"/>
+<listEntry value="VA._12_Verify_Loan_under18_Years"/>
+<listEntry value="VA._48_Void_Chargeoff"/>
+<listEntry value="VA._17_Verify_MO_over_Threshold"/>
+<listEntry value="VA.Current_SystemDate"/>
+<listEntry value="VA._33_Void_WU_Receive"/>
+<listEntry value="VA._57_Void_Interstore_Transfer"/>
+<listEntry value="VA.Multi_Customer_Creation"/>
+<listEntry value="VA._45_Void_Loan_Payment"/>
+<listEntry value="VA._56_Void_Regional_Manager"/>
+<listEntry value="VA._1_2_Verify_Loans_Fees_VA_PRA_1_PRA_2"/>
+<listEntry value="VA._15_Verify_ATM_with_Cart"/>
+<listEntry value="VA._42_Void_WU_BillPay"/>
+<listEntry value="VA._36_Void_Charity"/>
+<listEntry value="VA._32_Void_WU_Send"/>
+<listEntry value="VA._34_Void_WU_MO_Sale"/>
+<listEntry value="VA._40_Void_Notary"/>
+<listEntry value="VA.test"/>
+<listEntry value="VA._58_Void_Corporate"/>
+<listEntry value="VA._37_Void_sale_Copies"/>
+<listEntry value="VA._19_Verify_WU_Receiv_over_Threshold"/>
+<listEntry value="VA.Create_New_Customer"/>
+<listEntry value="VA._39_Void_Fax"/>
+<listEntry value="VA._4_a_Verify_Loan_Amt_VA"/>
+<listEntry value="VA._46_Void_Rescind_Loan"/>
+<listEntry value="VA._41_Void_Stamps"/>
+<listEntry value="VA._20_Verify_check_over_10000_Threshold"/>
+</listAttribute>
+<listAttribute key="org.testng.eclipse.METHOD_TEST_LIST"/>
+<listAttribute key="org.testng.eclipse.PACKAGE_TEST_LIST"/>
+<mapAttribute key="org.testng.eclipse.PARAMETERS"/>
+<stringAttribute key="org.testng.eclipse.PRE_DEFINED_LISTENERS" value=""/>
+<intAttribute key="org.testng.eclipse.TYPE" value="1"/>
+</launchConfiguration>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Sample Suite" verbose="1" >
+<test name="Regression Test Data Entry" >
+    <classes>
+	<class name="aml_regression._1_AML_TestScenarios"/> 
+	<class name="aml_regression._2_CTR_TestScenarios"/>  
+	<class name="aml_regression._3_AML_CTR_TestScenarios"/>  
+	<class name="aml_regression._4_NA_TestScenarios"/>
+	</classes> 
+  </test> 
+  
+<!--<test name="Regression Test Report Validation" >
+    <classes>
+ 	<class name="aml_regression._1_AML_BusinessReports"/>  
+	<class name="aml_regression._1_AML_NonBusinessReports"/> 
+	<class name="aml_regression._2_CTR_BusinessReports"/>
+	<class name="aml_regression._2_CTR_NonBusinessReports"/>     
+	<class name="aml_regression._3_AML_CTR_BusinessReports"/>
+	<class name="aml_regression._3_AML_CTR_NonBusinessReports"/>     
+    </classes> 
+  </test> -->
+</suite>

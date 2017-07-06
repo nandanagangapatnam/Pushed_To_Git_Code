@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Sample Suite" verbose="1" >
+<!--<test name="Regression Test_VA_LOC_Part1" >
+    <classes>
+		<class name="virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit"/>  
+		<class name="virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000"/>  
+		<class name="virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql"/>  
+		<class name="virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment"/>  	
+		<class name="virginia_regression._5_IncreaseCreditLimit"/>
+		<class name="virginia_regression._6_DecreaseCreditLimit"/>
+    </classes> 
+</test> 
+
+ <test name="Regression Test_VA_LOC_Part2" >
+    <classes>
+		<class name="virginia_regression._7_Verify_RPDueDate_within10days_OriginationDate"/>
+		<class name="virginia_regression._8_Verify_CreditLineIncreaseButton_disabled_LateCustomers"/>
+		<class name="virginia_regression._9_Verify_RP_Contractual_LateStatus"/> 
+		<class name="virginia_regression._10_Verify_Promise_Kept"/>
+		<class name="virginia_regression._11_Verify_Promise_NotKept"/> 
+		<class name="virginia_regression._12_Verify_updated_RP_PAmt"/>
+		<class name="virginia_regression._13_Verify_AvlbCredit_UpdateRP"/> 
+    </classes> 
+</test> -->
+  
+<test name="Regression Test_VA_PRA" >
+    <classes>
+		<class name="virginia_regression._01_Create_PRA_14_28_31"/>  
+		<class name="virginia_regression._02_Create_ETL_14_28_31"/>  
+		<class name="virginia_regression._03_Create_EPP_14_28_31"/>  
+		<class name="virginia_regression._04_Create_EPP_DueDate_14"/>  	
+		<class name="virginia_regression._05_Create_EPP_DueDate_28"/>
+		<class name="virginia_regression._06_Create_EPP_DueDate_31"/>
+    </classes> 
+  </test> 
+
+<test name="Regression Test_MI_EPP_PRA">
+    <classes>
+      <class name="michigan_regression.Create_EPP"/>
+    </classes>
+</test>
+
+<test name="Regression Test_IN_PRA" >
+    <classes>
+		<class name="indiana_regression._1_Create_EPP"/>  
+		<class name="indiana_regression._3_Verify_Max_Min_LoanAmount"/>  
+    </classes> 
+ </test> 
+
+<test name="Regression Test_FL_RateSheet">
+    <classes>
+		<class name="florida_regression.Florida_PRA_Ratesheet"/>
+    </classes>
+ </test>
+   
+</suite>

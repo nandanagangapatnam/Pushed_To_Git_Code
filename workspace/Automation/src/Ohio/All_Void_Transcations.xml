@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" >
+  <test name="Test" preserve-order="true">
+    <classes>
+    	<class name="Ohio.Current_SystemDate"></class>
+    	
+    	 <class name="Ohio._15_Verify_ATM_with_Cart"></class>
+         <class name="Ohio._32_Void_WU_Send"></class>
+        <class name="Ohio._33_Void_WU_Receive"></class>
+        <class name="Ohio._34_Void_WU_MO_Sale"></class> 
+        <class name="Ohio._35_Void_ATM_Sale"></class> 
+        <class name="Ohio._36_Void_Charity"></class> 
+        <class name="Ohio._37_Void_sale_Copies"></class> 
+        <class name="Ohio._38_Void_Envelopes"></class> 
+        <class name="Ohio._39_Void_Fax"></class> 
+        <class name="Ohio._40_Void_Notary"></class> 
+        <class name="Ohio._41_Void_Stamps"></class> 
+        <class name="Ohio._42_Void_WU_BillPay"></class> 
+        <class name="Ohio._43_Void_Insight_Cardload"></class> 
+        <class name="Ohio._56_Void_Regional_Manager"></class> 
+        <class name="Ohio._57_Void_Interstore_Transfer"></class> 
+        <class name="Ohio._58_Void_Corporate"></class> 
+        <class name="Ohio._59_Void_xcode_Misc_Cash"></class> 
+        <class name="Ohio._61_Void_xcode_Petty_cash"></class> 
+              
+    </classes>
+  </test>
+</suite>
+
+
+
+
+
+
+
+

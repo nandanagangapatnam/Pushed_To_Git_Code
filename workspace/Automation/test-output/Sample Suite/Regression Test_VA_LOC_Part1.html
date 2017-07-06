@@ -1,0 +1,305 @@
+<html>
+<head>
+<title>TestNG:  Regression Test_VA_LOC_Part1</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Regression Test_VA_LOC_Part1</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>36/1/0</td>
+</tr><tr>
+<td>Started on:</td><td>Tue Jun 27 10:04:57 EDT 2017</td>
+</tr>
+<tr><td>Total time:</td><td>1425 seconds (1425515 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql._3_LOC_RPDraw_equals_Credit()'><b>_3_LOC_RPDraw_equals_Credit</b><br>Test class: virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql</td>
+<td><div><pre>org.junit.ComparisonFailure: expected:&lt;[1]5.00&gt; but was:&lt;[]5.00&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql._3_LOC_RPDraw_equals_Credit(_3_Verify_LOC_RPPay_Draw_Cdt_Eql.java:316)
+... Removed 24 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1516536489", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1516536489'><pre>org.junit.ComparisonFailure: expected:&lt;[1]5.00&gt; but was:&lt;[]5.00&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql._3_LOC_RPDraw_equals_Credit(_3_Verify_LOC_RPPay_Draw_Cdt_Eql.java:316)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>24</td>
+<td>virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql@48140564</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit._1_navigate_to_eCashURL()'><b>_1_navigate_to_eCashURL</b><br>Test class: virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit</td>
+<td></td>
+<td>26</td>
+<td>virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000._1_navigate_to_eCashURL()'><b>_1_navigate_to_eCashURL</b><br>Test class: virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000</td>
+<td></td>
+<td>27</td>
+<td>virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql._1_navigate_to_eCashURL()'><b>_1_navigate_to_eCashURL</b><br>Test class: virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql</td>
+<td></td>
+<td>7</td>
+<td>virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql@48140564</td></tr>
+<tr>
+<td title='virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment._1_navigate_to_eCashURL()'><b>_1_navigate_to_eCashURL</b><br>Test class: virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment</td>
+<td></td>
+<td>8</td>
+<td>virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._5_IncreaseCreditLimit._1_navigate_to_eCashURL()'><b>_1_navigate_to_eCashURL</b><br>Test class: virginia_regression._5_IncreaseCreditLimit</td>
+<td></td>
+<td>7</td>
+<td>virginia_regression._5_IncreaseCreditLimit@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._1_navigate_to_eCashteller()'><b>_1_navigate_to_eCashteller</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>10</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment._2_admin_login()'><b>_2_admin_login</b><br>Test class: virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment</td>
+<td></td>
+<td>14</td>
+<td>virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit._2_teller_login()'><b>_2_teller_login</b><br>Test class: virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit</td>
+<td></td>
+<td>25</td>
+<td>virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000._2_teller_login()'><b>_2_teller_login</b><br>Test class: virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000</td>
+<td></td>
+<td>23</td>
+<td>virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql._2_teller_login()'><b>_2_teller_login</b><br>Test class: virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql</td>
+<td></td>
+<td>23</td>
+<td>virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql@48140564</td></tr>
+<tr>
+<td title='virginia_regression._5_IncreaseCreditLimit._2_teller_login()'><b>_2_teller_login</b><br>Test class: virginia_regression._5_IncreaseCreditLimit</td>
+<td></td>
+<td>9</td>
+<td>virginia_regression._5_IncreaseCreditLimit@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._2_teller_login()'><b>_2_teller_login</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>12</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._5_IncreaseCreditLimit._3_newLOCcreation_$100initialCreditLimit()'><b>_3_newLOCcreation_$100initialCreditLimit</b><br>Test class: virginia_regression._5_IncreaseCreditLimit</td>
+<td></td>
+<td>21</td>
+<td>virginia_regression._5_IncreaseCreditLimit@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._3_newLOCcreation_$5000initialCreditLimit()'><b>_3_newLOCcreation_$5000initialCreditLimit</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>19</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit._3_newcustomer_Creation()'><b>_3_newcustomer_Creation</b><br>Test class: virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit</td>
+<td></td>
+<td>32</td>
+<td>virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000._3_newcustomer_Creation()'><b>_3_newcustomer_Creation</b><br>Test class: virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000</td>
+<td></td>
+<td>25</td>
+<td>virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment._3_store_login()'><b>_3_store_login</b><br>Test class: virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment</td>
+<td></td>
+<td>9</td>
+<td>virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit._4_LOC_creation_ThreshholdDraw()'><b>_4_LOC_creation_ThreshholdDraw</b><br>Test class: virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit</td>
+<td></td>
+<td>557</td>
+<td>virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment._4_RapidPay_disenrollment()'><b>_4_RapidPay_disenrollment</b><br>Test class: virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment</td>
+<td></td>
+<td>26</td>
+<td>virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._5_IncreaseCreditLimit._4_increaseCreditLimittoMaximumAmount()'><b>_4_increaseCreditLimittoMaximumAmount</b><br>Test class: virginia_regression._5_IncreaseCreditLimit</td>
+<td></td>
+<td>15</td>
+<td>virginia_regression._5_IncreaseCreditLimit@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql._4_log_out()'><b>_4_log_out</b><br>Test class: virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql</td>
+<td></td>
+<td>5</td>
+<td>virginia_regression._3_Verify_LOC_RPPay_Draw_Cdt_Eql@48140564</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._4_log_out_teller()'><b>_4_log_out_teller</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>4</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000._4_newLOC_creation_CdtLimitof5000()'><b>_4_newLOC_creation_CdtLimitof5000</b><br>Test class: virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000</td>
+<td></td>
+<td>15</td>
+<td>virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000._5_LOC_draw_100to5000()'><b>_5_LOC_draw_100to5000</b><br>Test class: virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000</td>
+<td></td>
+<td>391</td>
+<td>virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit._5_log_out()'><b>_5_log_out</b><br>Test class: virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit</td>
+<td></td>
+<td>4</td>
+<td>virginia_regression._1_Create_LOC_ThreshholdMaxAmount_Credit@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._5_navigate_to_eCash_as_Admin()'><b>_5_navigate_to_eCash_as_Admin</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>12</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment._5_void_loan()'><b>_5_void_loan</b><br>Test class: virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment</td>
+<td></td>
+<td>3</td>
+<td>virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._5_IncreaseCreditLimit._5_void_loan()'><b>_5_void_loan</b><br>Test class: virginia_regression._5_IncreaseCreditLimit</td>
+<td></td>
+<td>3</td>
+<td>virginia_regression._5_IncreaseCreditLimit@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._6_admin_login()'><b>_6_admin_login</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>9</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000._6_log_out()'><b>_6_log_out</b><br>Test class: virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000</td>
+<td></td>
+<td>4</td>
+<td>virginia_regression._2_Verify_LOC_RPAmt_Draw_100_to_5000@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._5_IncreaseCreditLimit._6_log_out()'><b>_6_log_out</b><br>Test class: virginia_regression._5_IncreaseCreditLimit</td>
+<td></td>
+<td>1</td>
+<td>virginia_regression._5_IncreaseCreditLimit@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment._6_log_out_admin()'><b>_6_log_out_admin</b><br>Test class: virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment</td>
+<td></td>
+<td>8</td>
+<td>virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._7_decreaseCreditLimittoMinimumAmount()'><b>_7_decreaseCreditLimittoMinimumAmount</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>21</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment._7_log_out_teller()'><b>_7_log_out_teller</b><br>Test class: virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment</td>
+<td></td>
+<td>3</td>
+<td>virginia_regression._4_Verify_Available_Credit_PostRP_disenrollment@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._8_void_loan()'><b>_8_void_loan</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>5</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._6_DecreaseCreditLimit._9_log_out()'><b>_9_log_out</b><br>Test class: virginia_regression._6_DecreaseCreditLimit</td>
+<td></td>
+<td>1</td>
+<td>virginia_regression._6_DecreaseCreditLimit@49e4cb85</td></tr>
+</table><p>
+</body>
+</html>

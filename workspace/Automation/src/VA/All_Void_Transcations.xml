@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" >
+  <test name="Test" preserve-order="true">
+    <classes>
+    	<class name="VA.Current_SystemDate"></class>
+    	
+    	 <class name="VA._15_Verify_ATM_with_Cart"></class>
+         <class name="VA._32_Void_WU_Send"></class>
+        <class name="VA._33_Void_WU_Receive"></class>
+        <class name="VA._34_Void_WU_MO_Sale"></class> 
+        <class name="VA._35_Void_ATM_Sale"></class> 
+        <class name="VA._36_Void_Charity"></class> 
+        <class name="VA._37_Void_sale_Copies"></class> 
+        <class name="VA._38_Void_Envelopes"></class> 
+        <class name="VA._39_Void_Fax"></class> 
+        <class name="VA._40_Void_Notary"></class> 
+        <class name="VA._41_Void_Stamps"></class> 
+        <class name="VA._42_Void_WU_BillPay"></class> 
+        <class name="VA._43_Void_Insight_Cardload"></class> 
+        <class name="VA._56_Void_Regional_Manager"></class> 
+        <class name="VA._57_Void_Interstore_Transfer"></class> 
+        <class name="VA._58_Void_Corporate"></class> 
+        <class name="VA._59_Void_xcode_Misc_Cash"></class> 
+                      
+    </classes>
+  </test>
+</suite>
+
+
+
+
+
+
+
+

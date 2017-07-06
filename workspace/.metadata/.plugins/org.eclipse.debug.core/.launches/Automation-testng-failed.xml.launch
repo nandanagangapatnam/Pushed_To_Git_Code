@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.testng.eclipse.launchconfig">
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="org.testng.remote.RemoteTestNG"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Automation"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value=" -DfailedTests=&quot;_6_businessdatebacktoOriginal,_4_PRA_creation_MaxDraw,_2_teller_login,_7_logout_admin,_8_logout_teller,_2_navigate_to_eCashURL,_6_log_out,_5_PRA_Creation,_5_PRA_creation_MinDraw,_4_new_4_PRAs_Creation,_8_logout_store,_5_EPP_BEFORE_ON_AFTER_OriDate,_1_admin_login,_3_teller_login,_5_EPP_ON_BEFORE_AFTER_Origination_DueDate&quot;  -D-D"/>
+<listAttribute key="org.testng.eclipse.SUITE_TEST_LIST">
+<listEntry value="C:\Automation QA\workspace\Automation\test-output/testng-failed.xml"/>
+</listAttribute>
+<intAttribute key="org.testng.eclipse.TYPE" value="3"/>
+</launchConfiguration>

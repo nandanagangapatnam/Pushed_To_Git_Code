@@ -1,0 +1,304 @@
+<html>
+<head>
+<title>TestNG:  Regression Test_VA_PRA</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Regression Test_VA_PRA</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>45/0/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Jun 26 15:34:27 EDT 2017</td>
+</tr>
+<tr><td>Total time:</td><td>2735 seconds (2735876 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='virginia_regression._01_Create_PRA_14_28_31._1_admin_login()'><b>_1_admin_login</b><br>Test class: virginia_regression._01_Create_PRA_14_28_31</td>
+<td></td>
+<td>15</td>
+<td>virginia_regression._01_Create_PRA_14_28_31@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._02_Create_ETL_14_28_31._1_admin_login()'><b>_1_admin_login</b><br>Test class: virginia_regression._02_Create_ETL_14_28_31</td>
+<td></td>
+<td>14</td>
+<td>virginia_regression._02_Create_ETL_14_28_31@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._03_Create_EPP_14_28_31._1_admin_login()'><b>_1_admin_login</b><br>Test class: virginia_regression._03_Create_EPP_14_28_31</td>
+<td></td>
+<td>13</td>
+<td>virginia_regression._03_Create_EPP_14_28_31@48140564</td></tr>
+<tr>
+<td title='virginia_regression._04_Create_EPP_DueDate_14._1_admin_login()'><b>_1_admin_login</b><br>Test class: virginia_regression._04_Create_EPP_DueDate_14</td>
+<td></td>
+<td>14</td>
+<td>virginia_regression._04_Create_EPP_DueDate_14@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._05_Create_EPP_DueDate_28._1_admin_login()'><b>_1_admin_login</b><br>Test class: virginia_regression._05_Create_EPP_DueDate_28</td>
+<td></td>
+<td>14</td>
+<td>virginia_regression._05_Create_EPP_DueDate_28@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._06_Create_EPP_DueDate_31._1_admin_login()'><b>_1_admin_login</b><br>Test class: virginia_regression._06_Create_EPP_DueDate_31</td>
+<td></td>
+<td>12</td>
+<td>virginia_regression._06_Create_EPP_DueDate_31@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._01_Create_PRA_14_28_31._2_navigate_to_eCashURL()'><b>_2_navigate_to_eCashURL</b><br>Test class: virginia_regression._01_Create_PRA_14_28_31</td>
+<td></td>
+<td>10</td>
+<td>virginia_regression._01_Create_PRA_14_28_31@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._02_Create_ETL_14_28_31._2_navigate_to_eCashURL()'><b>_2_navigate_to_eCashURL</b><br>Test class: virginia_regression._02_Create_ETL_14_28_31</td>
+<td></td>
+<td>6</td>
+<td>virginia_regression._02_Create_ETL_14_28_31@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._03_Create_EPP_14_28_31._2_navigate_to_eCashURL()'><b>_2_navigate_to_eCashURL</b><br>Test class: virginia_regression._03_Create_EPP_14_28_31</td>
+<td></td>
+<td>26</td>
+<td>virginia_regression._03_Create_EPP_14_28_31@48140564</td></tr>
+<tr>
+<td title='virginia_regression._04_Create_EPP_DueDate_14._2_navigate_to_eCashURL()'><b>_2_navigate_to_eCashURL</b><br>Test class: virginia_regression._04_Create_EPP_DueDate_14</td>
+<td></td>
+<td>7</td>
+<td>virginia_regression._04_Create_EPP_DueDate_14@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._05_Create_EPP_DueDate_28._2_navigate_to_eCashURL()'><b>_2_navigate_to_eCashURL</b><br>Test class: virginia_regression._05_Create_EPP_DueDate_28</td>
+<td></td>
+<td>23</td>
+<td>virginia_regression._05_Create_EPP_DueDate_28@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._06_Create_EPP_DueDate_31._2_navigate_to_eCashURL()'><b>_2_navigate_to_eCashURL</b><br>Test class: virginia_regression._06_Create_EPP_DueDate_31</td>
+<td></td>
+<td>6</td>
+<td>virginia_regression._06_Create_EPP_DueDate_31@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._01_Create_PRA_14_28_31._3_teller_login()'><b>_3_teller_login</b><br>Test class: virginia_regression._01_Create_PRA_14_28_31</td>
+<td></td>
+<td>9</td>
+<td>virginia_regression._01_Create_PRA_14_28_31@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._02_Create_ETL_14_28_31._3_teller_login()'><b>_3_teller_login</b><br>Test class: virginia_regression._02_Create_ETL_14_28_31</td>
+<td></td>
+<td>10</td>
+<td>virginia_regression._02_Create_ETL_14_28_31@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._03_Create_EPP_14_28_31._3_teller_login()'><b>_3_teller_login</b><br>Test class: virginia_regression._03_Create_EPP_14_28_31</td>
+<td></td>
+<td>10</td>
+<td>virginia_regression._03_Create_EPP_14_28_31@48140564</td></tr>
+<tr>
+<td title='virginia_regression._04_Create_EPP_DueDate_14._3_teller_login()'><b>_3_teller_login</b><br>Test class: virginia_regression._04_Create_EPP_DueDate_14</td>
+<td></td>
+<td>39</td>
+<td>virginia_regression._04_Create_EPP_DueDate_14@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._05_Create_EPP_DueDate_28._3_teller_login()'><b>_3_teller_login</b><br>Test class: virginia_regression._05_Create_EPP_DueDate_28</td>
+<td></td>
+<td>41</td>
+<td>virginia_regression._05_Create_EPP_DueDate_28@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._06_Create_EPP_DueDate_31._3_teller_login()'><b>_3_teller_login</b><br>Test class: virginia_regression._06_Create_EPP_DueDate_31</td>
+<td></td>
+<td>9</td>
+<td>virginia_regression._06_Create_EPP_DueDate_31@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._04_Create_EPP_DueDate_14._4_new_4_PRAs_Creation()'><b>_4_new_4_PRAs_Creation</b><br>Test class: virginia_regression._04_Create_EPP_DueDate_14</td>
+<td></td>
+<td>173</td>
+<td>virginia_regression._04_Create_EPP_DueDate_14@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._05_Create_EPP_DueDate_28._4_new_4_PRAs_Creation()'><b>_4_new_4_PRAs_Creation</b><br>Test class: virginia_regression._05_Create_EPP_DueDate_28</td>
+<td></td>
+<td>174</td>
+<td>virginia_regression._05_Create_EPP_DueDate_28@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._06_Create_EPP_DueDate_31._4_new_4_PRAs_Creation()'><b>_4_new_4_PRAs_Creation</b><br>Test class: virginia_regression._06_Create_EPP_DueDate_31</td>
+<td></td>
+<td>184</td>
+<td>virginia_regression._06_Create_EPP_DueDate_31@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._04_Create_EPP_DueDate_14._5_EPP_BEFORE_ON_AFTER_OriDate()'><b>_5_EPP_BEFORE_ON_AFTER_OriDate</b><br>Test class: virginia_regression._04_Create_EPP_DueDate_14</td>
+<td></td>
+<td>59</td>
+<td>virginia_regression._04_Create_EPP_DueDate_14@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._03_Create_EPP_14_28_31._5_EPP_Creation()'><b>_5_EPP_Creation</b><br>Test class: virginia_regression._03_Create_EPP_14_28_31</td>
+<td></td>
+<td>794</td>
+<td>virginia_regression._03_Create_EPP_14_28_31@48140564</td></tr>
+<tr>
+<td title='virginia_regression._05_Create_EPP_DueDate_28._5_EPP_ON_BEFORE_AFTER_Origination_DueDate()'><b>_5_EPP_ON_BEFORE_AFTER_Origination_DueDate</b><br>Test class: virginia_regression._05_Create_EPP_DueDate_28</td>
+<td></td>
+<td>60</td>
+<td>virginia_regression._05_Create_EPP_DueDate_28@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._06_Create_EPP_DueDate_31._5_EPP_ON_BEFORE_AFTER_Origination_DueDate()'><b>_5_EPP_ON_BEFORE_AFTER_Origination_DueDate</b><br>Test class: virginia_regression._06_Create_EPP_DueDate_31</td>
+<td></td>
+<td>62</td>
+<td>virginia_regression._06_Create_EPP_DueDate_31@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._02_Create_ETL_14_28_31._5_ETL_Creation()'><b>_5_ETL_Creation</b><br>Test class: virginia_regression._02_Create_ETL_14_28_31</td>
+<td></td>
+<td>422</td>
+<td>virginia_regression._02_Create_ETL_14_28_31@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._01_Create_PRA_14_28_31._5_PRA_Creation()'><b>_5_PRA_Creation</b><br>Test class: virginia_regression._01_Create_PRA_14_28_31</td>
+<td></td>
+<td>430</td>
+<td>virginia_regression._01_Create_PRA_14_28_31@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._01_Create_PRA_14_28_31._6_businessdatebacktoOriginal()'><b>_6_businessdatebacktoOriginal</b><br>Test class: virginia_regression._01_Create_PRA_14_28_31</td>
+<td></td>
+<td>3</td>
+<td>virginia_regression._01_Create_PRA_14_28_31@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._02_Create_ETL_14_28_31._6_businessdatebacktoOriginal()'><b>_6_businessdatebacktoOriginal</b><br>Test class: virginia_regression._02_Create_ETL_14_28_31</td>
+<td></td>
+<td>3</td>
+<td>virginia_regression._02_Create_ETL_14_28_31@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._03_Create_EPP_14_28_31._6_businessdatebacktoOriginal()'><b>_6_businessdatebacktoOriginal</b><br>Test class: virginia_regression._03_Create_EPP_14_28_31</td>
+<td></td>
+<td>3</td>
+<td>virginia_regression._03_Create_EPP_14_28_31@48140564</td></tr>
+<tr>
+<td title='virginia_regression._04_Create_EPP_DueDate_14._6_businessdatebacktoOriginal()'><b>_6_businessdatebacktoOriginal</b><br>Test class: virginia_regression._04_Create_EPP_DueDate_14</td>
+<td></td>
+<td>12</td>
+<td>virginia_regression._04_Create_EPP_DueDate_14@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._05_Create_EPP_DueDate_28._6_businessdatebacktoOriginal()'><b>_6_businessdatebacktoOriginal</b><br>Test class: virginia_regression._05_Create_EPP_DueDate_28</td>
+<td></td>
+<td>6</td>
+<td>virginia_regression._05_Create_EPP_DueDate_28@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._06_Create_EPP_DueDate_31._6_businessdatebacktoOriginal()'><b>_6_businessdatebacktoOriginal</b><br>Test class: virginia_regression._06_Create_EPP_DueDate_31</td>
+<td></td>
+<td>7</td>
+<td>virginia_regression._06_Create_EPP_DueDate_31@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._01_Create_PRA_14_28_31._7_logout_admin()'><b>_7_logout_admin</b><br>Test class: virginia_regression._01_Create_PRA_14_28_31</td>
+<td></td>
+<td>4</td>
+<td>virginia_regression._01_Create_PRA_14_28_31@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._02_Create_ETL_14_28_31._7_logout_admin()'><b>_7_logout_admin</b><br>Test class: virginia_regression._02_Create_ETL_14_28_31</td>
+<td></td>
+<td>3</td>
+<td>virginia_regression._02_Create_ETL_14_28_31@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._03_Create_EPP_14_28_31._7_logout_admin()'><b>_7_logout_admin</b><br>Test class: virginia_regression._03_Create_EPP_14_28_31</td>
+<td></td>
+<td>6</td>
+<td>virginia_regression._03_Create_EPP_14_28_31@48140564</td></tr>
+<tr>
+<td title='virginia_regression._04_Create_EPP_DueDate_14._7_logout_admin()'><b>_7_logout_admin</b><br>Test class: virginia_regression._04_Create_EPP_DueDate_14</td>
+<td></td>
+<td>6</td>
+<td>virginia_regression._04_Create_EPP_DueDate_14@58ceff1</td></tr>
+<tr>
+<td title='virginia_regression._05_Create_EPP_DueDate_28._7_logout_admin()'><b>_7_logout_admin</b><br>Test class: virginia_regression._05_Create_EPP_DueDate_28</td>
+<td></td>
+<td>6</td>
+<td>virginia_regression._05_Create_EPP_DueDate_28@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._06_Create_EPP_DueDate_31._7_logout_admin()'><b>_7_logout_admin</b><br>Test class: virginia_regression._06_Create_EPP_DueDate_31</td>
+<td></td>
+<td>4</td>
+<td>virginia_regression._06_Create_EPP_DueDate_31@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._05_Create_EPP_DueDate_28._8_logout_store()'><b>_8_logout_store</b><br>Test class: virginia_regression._05_Create_EPP_DueDate_28</td>
+<td></td>
+<td>4</td>
+<td>virginia_regression._05_Create_EPP_DueDate_28@2133c8f8</td></tr>
+<tr>
+<td title='virginia_regression._06_Create_EPP_DueDate_31._8_logout_store()'><b>_8_logout_store</b><br>Test class: virginia_regression._06_Create_EPP_DueDate_31</td>
+<td></td>
+<td>1</td>
+<td>virginia_regression._06_Create_EPP_DueDate_31@49e4cb85</td></tr>
+<tr>
+<td title='virginia_regression._01_Create_PRA_14_28_31._8_logout_teller()'><b>_8_logout_teller</b><br>Test class: virginia_regression._01_Create_PRA_14_28_31</td>
+<td></td>
+<td>4</td>
+<td>virginia_regression._01_Create_PRA_14_28_31@7c30a502</td></tr>
+<tr>
+<td title='virginia_regression._02_Create_ETL_14_28_31._8_logout_teller()'><b>_8_logout_teller</b><br>Test class: virginia_regression._02_Create_ETL_14_28_31</td>
+<td></td>
+<td>1</td>
+<td>virginia_regression._02_Create_ETL_14_28_31@2c8d66b2</td></tr>
+<tr>
+<td title='virginia_regression._03_Create_EPP_14_28_31._8_logout_teller()'><b>_8_logout_teller</b><br>Test class: virginia_regression._03_Create_EPP_14_28_31</td>
+<td></td>
+<td>1</td>
+<td>virginia_regression._03_Create_EPP_14_28_31@48140564</td></tr>
+<tr>
+<td title='virginia_regression._04_Create_EPP_DueDate_14._8_logout_teller()'><b>_8_logout_teller</b><br>Test class: virginia_regression._04_Create_EPP_DueDate_14</td>
+<td></td>
+<td>4</td>
+<td>virginia_regression._04_Create_EPP_DueDate_14@58ceff1</td></tr>
+</table><p>
+</body>
+</html>

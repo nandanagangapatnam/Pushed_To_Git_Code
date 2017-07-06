@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<suite name="Suite" >
+  <test name="Test" preserve-order="true">
+    <classes>
+    	<class name="VA.Current_SystemDate"></class>
+    	<class name="VA._12_Verify_Loan_under18_Years"></class>
+    	<class name="VA._1_2_Verify_Loans_Fees_VA_PRA_1_PRA_2"></class>
+       	<class name="VA._46_Void_Rescind_Loan"></class>
+    	<class name="VA._45_Void_Loan_Payment"></class>
+    	<class name="VA._48_Void_Chargeoff"></class>
+    	<class name="VA._47_Void_Loan_Payoff"></class>    	
+    	<class name="VA._4_a_Verify_Loan_Amt_VA"></class> 
+       	
+    	
+         
+    </classes>
+  </test>
+</suite>

@@ -1,0 +1,409 @@
+/**
+ * 
+ */
+/**
+ * @author Garima
+ *
+ */
+package indiana_regression;
+
+import org.testng.annotations.Test;
+import Utility.Utils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.io.FileInputStream;
+import java.util.Properties;
+import Functions.Function_Classes;
+
+
+public class _2_Verify_PRA_Interest_Nandana {
+	
+	String vBrowser = "FireFox";
+	//set driver path 
+	
+ 
+	WebDriver driver;
+	String URL = "http://ecashtest.corp.checksmart.com/logon.aspx?ReturnUrl=%2f";
+	String Username, Password, LoggedName;
+	int vSleep;
+	String loanlink,Status,DueDate,BusDate,Late,OriDate;
+	String Error_Msg;
+	String xpath;
+	String xlURL, xlUsername, xlPassword, xlStore, xlLoggedname, xlCustFName, xlCustLName, xlssn, xldob, xlRoutingno, xlbankname, xlaccno, xlcheckno;
+	String[][] xlData;
+	String[][] xlResults;
+	public static Properties OR=null;
+	
+
+	//@BeforeTest	
+	@Test (priority = 1)
+	public void _1_navigate_to_eCashURL (){		
+		System.out.println("Ecash URL  --  Started");
+		driver = new FirefoxDriver(); //	firefox driver
+		driver.manage().window().maximize();	
+		 
+	// Ecash site access
+	Function_Classes.navigate_to(driver, URL);		
+	
+}
+	
+	@Test (priority = 2)
+	public void  _2_teller_login () throws Exception{
+		OR = new Properties();
+		FileInputStream fn = new FileInputStream (System.getProperty("user.dir")+ "//src//Functions/OR.properties");
+		OR.load(fn);
+		
+		xlData = Utils.readXL(OR.getProperty("ipath"),"TestData_IN");
+
+	
+		
+			xlUsername = xlData [9][0];
+			xlPassword = xlData [9][1];
+			xlStore = xlData [9][2];
+			
+			System.out.println("Ecash Teller Login   --  Started");
+		
+			Thread.sleep(1000);
+			xpath=".//*[@id='txtUsername']";  // Clearing User Name field
+			Function_Classes.field_clear(driver, xpath );
+		
+			Thread.sleep(1000);
+			xpath=".//*[@id='txtUsername']";  // Passing User name 
+			Function_Classes.field_sendKeys(driver, xpath, xlUsername);
+		
+			Thread.sleep(1000);
+			xpath=".//*[@id='txtPasswd']";  // Clearing Password field
+			Function_Classes.field_clear(driver, xpath );
+		
+			Thread.sleep(1000);
+			xpath=".//*[@id='txtPasswd']";  // Passing Password
+			Function_Classes.field_sendKeys(driver, xpath, xlPassword);
+		
+			Thread.sleep(1000);
+			xpath = ".//*[@id='btnSubmit']"; // Click on go button
+			Function_Classes.field_click(driver, xpath);
+		
+			Thread.sleep(1000);
+			xpath=".//*[@id='ddlStore']";  // selecting the state 
+			//String keys = "9998 Business date is always current date, TN";
+			Function_Classes.field_sendKeys(driver, xpath, xlStore);
+
+			Thread.sleep(1000);
+			xpath = ".//*[@id='btnSelStore']"; // clicking ok 
+			Function_Classes.field_click (driver, xpath);
+		
+		
+		System.out.println("Ecash Store Login   --  Passed");
+	}
+	
+	
+	// New Loan Creation  - working fine
+	@Test (priority = 4)
+	public void  _4_PRA_creation_interest() throws Exception {
+		
+		xlResults = Utils.readXL(OR.getProperty("iwpath"),"IN_EPP");
+		
+		
+		
+		for ( int i=9; i <32 ; i++){
+		
+			String loanamount = xlData[i][12];
+		
+			xpath = ".//*[@id='Left']/a[5]"; // Click on Customer left navigation button
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath = ".//*[@id='ctl00_MainContent_CustSrch_txtName']"; // enter cust search  value
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(xlData[i][4]);
+	
+			xpath =".//*[@id='ctl00_MainContent_CustSrch_btnSubmit']";  // click on Search button
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+	
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewTrans']"; // clicking on the $ button
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lnkNewAdvance']";  // Clicking on New Advance
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			
+			//to do - write an xpath for selcting loan model dropdown - Nandana
+	
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_chkIsCheckOnDemand']";  // Clicking on loanmodel dropdowm
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+	
+			Thread.sleep(1000);
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtLoanAmount']";  // entering the Loan Amount 
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(Keys.BACK_SPACE);
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(Keys.BACK_SPACE);
+			Thread.sleep(1000);
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(loanamount);
+		
+			Thread.sleep(1000);	
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep2_Submit']";  // Next Button
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click(); // Click on Next button 
+	
+			Thread.sleep(1000);	
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep2_Submit']";  // Next Button
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click(); // Click on Next button 
+			
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep3_Submit']";  // Next Button
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+											
+			xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep4_Submit']";  // Finish Button
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+			// to do - may not need this step - nandana
+			
+			Thread.sleep(1500);
+			xpath =".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_vwDueDate']";  // due date
+			DueDate = Function_Classes.field_gettext(driver,xpath);
+			xlResults[8][5] = DueDate;
+			
+						
+			xpath =".//*[@id='HeaderRight']/div/table/tbody/tr/td[1]/span[3]";  // business date
+			BusDate=new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			String BDate = BusDate.substring(15);
+			xlResults[8][7] = BDate;
+						
+						
+			xpath =".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_vwOrigDate']";  // business date
+			OriDate=new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			xlResults[8][6] = OriDate;
+						
+			xpath =".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_vwStatus']";  // status
+			Late = new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			xlResults[8][4] = Late;
+				
+			xpath =".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_lnkLoanId']";  // loan link
+			loanlink =new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+			System.out.println(loanlink);
+			xlResults[8][3] = loanlink;
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+			xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lnkDelete']/span";
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtReason']";
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+			Function_Classes.field_sendKeys(driver, xpath, "Test" );  // Enter Reason
+				
+			xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnSubmit']";
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+			xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_lnkViewAll']";
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+				
+			xlResults[8][9] = "DAMN: NO ERROR MSG POPPED-UP";	
+						
+			xlResults[8][8] = "DAMN : FAILED";
+						
+			xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_CustomerInfo_lnkName']";
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+						
+			xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewTrans']";
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+		}	
+						
+		//			Utils.writeXL(OR.getProperty("vLOCpath"),"VA_LOC",xlResults);
+				//	Assert.assertEquals(Error_Msg,"Please correct the following errors before continuing: The Initial Draw Amount cannot be greater than the Loc Loan AmountThe Initial Draw Amount cannot be greater than the Loc Loan Amount");
+			
+						Thread.sleep(1000);
+		//				Utils.writeXL(OR.getProperty("iwpath"),"IN_EPP",xlResults);
+			
+		}
+		
+		
+	@Test (priority = 5)
+	public void  _5_PRA_creation_MinDraw() throws Exception {
+	
+		
+		String loanamount = xlData[34][13];
+
+		xlResults[9][1] = xlData[34][4];
+		xlResults[9][2] = xlData[34][5];	
+		
+		xpath = ".//*[@id='Left']/a[5]"; // Click on Customer left navigation button
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+		xpath = ".//*[@id='ctl00_MainContent_CustSrch_txtName']"; // enter cust search  value
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(xlData[34][4]);
+
+		xpath =".//*[@id='ctl00_MainContent_CustSrch_btnSubmit']";  // click on Search button
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+		xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewTrans']"; // clicking on the $ button
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			
+
+		xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lnkNewAdvance']";  // Clicking on New Advance
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+		xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_chkIsCheckOnDemand']";  // Clicking on loanmodel dropdowm
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+	
+		Thread.sleep(1000);
+		xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtLoanAmount']";  // entering the Loan Amount 
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).clear();
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+		Thread.sleep(1000);
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(loanamount);
+		
+		
+		Thread.sleep(1000);
+		xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep2_Submit']";  // Next Button
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click(); // Click on Next button 
+
+		Thread.sleep(1000);	
+		xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep2_Submit']";  // Next Button
+		new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click(); // Click on Next button 
+
+
+		
+		xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_upnlErr']/div/div[2]/ul/li";
+
+		Thread.sleep(1500);
+		if(driver.findElements(By.xpath(xpath)).size() != 0){
+				
+			Error_Msg =new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText(); // Click on Next button
+	
+				if(Error_Msg.contains("The loan amount "+"$"+xlData[34][13]+" is less than the minimum allowed of $50.00 based on the loan settings")){
+				
+
+						Thread.sleep(1000);	
+						xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtLoanAmount']";  // entering the Loan Amount 
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(Keys.BACK_SPACE);
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(Keys.BACK_SPACE);
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(Keys.BACK_SPACE);
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(Keys.BACK_SPACE);
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(Keys.BACK_SPACE);
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(Keys.BACK_SPACE);
+						Thread.sleep(1000);	
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).sendKeys(xlData[34][12]);
+				
+						Thread.sleep(1000);	
+						xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep2_Submit']";  // Next Button
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+						Thread.sleep(1000);	
+						xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep2_Submit']";  // Next Button
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click(); // Click on Next button 
+
+								
+						xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep3_Submit']";  // Next Button
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+																	
+						xpath = ".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnStep4_Submit']";  // Finish Button
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+			
+						Thread.sleep(1500);
+						xpath =".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_vwDueDate']";  // due date
+						DueDate = Function_Classes.field_gettext(driver,xpath);
+						xlResults[9][5] = DueDate;
+			
+						
+						xpath =".//*[@id='HeaderRight']/div/table/tbody/tr/td[1]/span[3]";  // business date
+						BusDate=new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+						String BDate = BusDate.substring(15);
+						xlResults[9][7] = BDate;
+						
+						
+						xpath =".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_vwOrigDate']";  // business date
+						OriDate=new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+						xlResults[9][6] = OriDate;
+						
+						xpath =".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_vwStatus']";  // status
+						Late = new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+						xlResults[9][4] = Late;
+
+				
+						xpath =".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_lnkLoanId']";  // loan link
+						loanlink =new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).getText();
+						System.out.println(loanlink);
+						xlResults[9][3] = loanlink;
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+				
+						xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_lnkDelete']/span";
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+						xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_txtReason']";
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+						Function_Classes.field_sendKeys(driver, xpath, "Test" );  // Enter Reason
+				
+						xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_btnSubmit']";
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+						xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_LoanDetail_lnkViewAll']";
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+
+						
+
+						xlResults[9][9] = Error_Msg;	
+						xlResults[9][8] = "YIPEE : PASSED";
+					}
+			
+					else {
+						
+						
+						xlResults[9][9] = Error_Msg;	
+						
+						xlResults[9][8] = "DAMN : FAILED";
+						
+						xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_CustomerInfo_lnkName']";
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+						
+						xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewTrans']";
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+						
+				}
+			}		
+					else{
+						
+						
+						xlResults[9][9] = "DAMN: NO ERROR MSG POPPED-UP";	
+						
+						xlResults[9][8] = "DAMN : FAILED";
+						xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_CustomerInfo_lnkName']";
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+						
+						xpath=".//*[@id='ctl00_ctl00_MainContent_ChildContent1_FrmCustGeneral_lnkNewTrans']";
+						new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+					}	
+						
+
+					Thread.sleep(1000);
+	//				Utils.writeXL(OR.getProperty("iwpath"),"IN_EPP",xlResults);
+			
+		}
+
+		
+		
+	@Test (priority = 6)
+	public void _6_log_out() throws Exception {
+	
+		
+		//	Thread.sleep(1500);
+			xpath=".//*[@id='menuv2']/li[7]/a";
+		//	Function_Classes.field_click(driver,".//*[@id='menuv2']/li[7]/a");
+			new WebDriverWait(driver, 30).until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath))).click();
+			
+			Thread.sleep(1500);
+			Function_Classes.logout(driver, ".//*[@id='menuv2']/li[7]/a"); // for log out 
+			
+			Thread.sleep(1000);
+			driver.close();
+
+		}
+	
+	}	
+	
+	
+		
+
+	

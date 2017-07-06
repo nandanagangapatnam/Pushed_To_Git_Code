@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="virginia_regression._01_Create_PRA_14_28_32_Nandana">
+        <methods>
+          <include name="_5_PRA_Creation"/>
+          <include name="_3_teller_login"/>
+          <include name="_2_navigate_to_eCashURL"/>
+          <include name="_8_logout_teller"/>
+        </methods>
+      </class> <!-- virginia_regression._01_Create_PRA_14_28_32_Nandana -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
